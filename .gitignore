@@ -1,0 +1,73 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Files
+Files_Personal_Use
+
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_metadata/
+
+# PyTorch model checkpoints and data
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+checkpoints/
+runs/
+
+# Dataset (too large for git)
+dataset/
+data/
+
+# Logs and outputs
+logs/
+wandb/
+mlruns/
+tensorboard/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.out
+*.toc
+*.synctex.gz
+*.synctex(busy)
+
+# Compiled PDF (keep source .tex, regenerate PDF)
+# proposal.pdf
+
+# Secrets / credentials
+.env
+*.key
+*.pem
