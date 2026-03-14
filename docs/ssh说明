@@ -1,0 +1,7 @@
+你每次的操作流程：
+
+SSH 到登录节点（HPC 云端终端或 ssh tufts-login）
+运行 srun --ntasks=1 --time=0-4:00:00 --mem 16g --pty bash
+看提示符里分配到的节点名（比如 pax015）
+如果节点名变了，改一下 SSH config 里 pax-node 的 HostName
+在 Cursor 用 Remote-SSH 连接 pax-node

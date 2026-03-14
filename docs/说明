@@ -1,0 +1,65 @@
+Additional instructions for VSCode on HPC
+Updated 1 week ago by Panagiotis Lymperopoulos
+Prerequisites
+Before you begin, ensure you have:
+
+Your Tufts UTLN (username, e.g., jjumbo01).
+Visual Studio Code installed with the Remote - SSH extension (should also work with vscode forks e.g. Cursor)
+An SSH key pair generated and registered (e.g., id_ed25519), with the private key on your local machine.
+Make sure to transfer that ssh key to the cluster (login-prod.pax.edu) otherwise you may have issue setting up vscode
+Step 1: SSH into the Login Node
+First, you need to access the cluster’s login node via your local terminal. The login node is the gateway to the cluster; you should never run heavy code directly on it.
+
+Open your local terminal (or VS Code integrated terminal).
+Run the following SSH command, replacing <your_utln> with your actual Tufts username:
+ssh <your_utln>@login-prod.pax.tufts.edu
+
+You should see the Pax Cluster welcome message featuring the elephant ASCII art.
+Step 2: Request an Interactive Compute Node
+Once on the login node, you must request resources from the job scheduler (SLURM) to get a dedicated compute node where you can safely run your assignments.
+
+Run the following srun command to request a node with 1 task, 16GB of memory, and a 4-hour time limit:
+srun --ntasks=1 --time=0-4:00:00 --mem 16g --pty bash
+
+The terminal will display srun: job <job_id> queued and waiting for resources followed by srun: job <job_id> has been allocated resources.
+Important: Note the name of the compute node you are assigned in your new prompt (e.g., [<your_utln>@pax046 ~]$). In this example, the node is pax046. You will need this for the next step.
+Step 3: Configure VS Code for the Compute Node
+Now that you have a compute node assigned, you need to tell VS Code how to connect to it.
+
+Open VS Code and navigate to the Remote Explorer tab on the left sidebar.
+In the SSH section, click the Gear icon (⚙️) to open your SSH configuration file.
+Select your user config file (usually ~/.ssh/config on Mac/Linux or C:\Users\Name\.ssh\config on Windows).
+Add the following template to the file. Update the <assigned_node>, <your_utln>, and your IdentityFile path to match your setup:
+# Optional: Entry for the login node
+Host login.pax.tufts.edu
+    HostName login-prod.pax.tufts.edu
+    User <your_utln>
+    IdentityFile ~/.ssh/id_ed25519 
+
+# Entry for your specific compute node
+Host <assigned_node>.pax.tufts.edu
+    HostName <assigned_node>.pax.tufts.edu
+    User <your_utln>
+    IdentityFile ~/.ssh/id_ed25519
+Visit Manage Class to disable runnable code snippets×
+Example: If your node is pax046 and your username is lliu10, your Host and HostName would be pax046.pax.tufts.edu and your User would be lliu10. 5. Save the file (Ctrl+S or Cmd+S).
+
+Step 4: Connect via VS Code
+Refresh the Remote Explorer pane in VS Code.
+Find the compute node you just added to the list (e.g., pax046.pax.tufts.edu).
+Hover over the node name and click the Connect in Current Window icon (or right-click and select it).
+Wait for the connection to establish. You should see the green SSH indicator in the bottom-left corner of VS Code confirm the active connection to your node.
+Step 5: Load class Modules
+Make sure you have loaded the class module
+
+module load class/default
+module load cs137/2026spring
+Visit Manage Class to disable runnable code snippets×
+Step 6: Open Your Working Directory
+Now that VS Code is running directly on your allocated compute node, you can open your class folder.
+
+Click Open Folder in the VS Code Explorer pane (or go to File > Open Folder).
+Type in the absolute path to your specific CS137 student directory:
+/cluster/tufts/c26sp1cs0137/<your_utln>
+
+Click OK. VS Code will reload into that directory, and you are ready to code!

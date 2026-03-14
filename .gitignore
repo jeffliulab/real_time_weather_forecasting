@@ -28,9 +28,9 @@ env/
 checkpoints/
 runs/
 
-# Dataset (too large for git)
-dataset/
+# Raw data (too large for git)
 data/
+dataset/
 
 # Logs and outputs
 logs/
@@ -71,3 +71,6 @@ Desktop.ini
 .env
 *.key
 *.pem
+
+# personal usage
+项目文档（初始）
