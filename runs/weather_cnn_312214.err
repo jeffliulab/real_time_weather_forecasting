@@ -1,0 +1,4 @@
+/opt/conda/lib/python3.10/site-packages/torch/nn/modules/conv.py:456: UserWarning: Plan failed with a cudnnException: CUDNN_BACKEND_EXECUTION_PLAN_DESCRIPTOR: cudnnFinalize Descriptor Failed cudnn_status: CUDNN_STATUS_NOT_SUPPORTED (Triggered internally at /opt/conda/conda-bld/pytorch_1712608935911/work/aten/src/ATen/native/cudnn/Conv_v8.cpp:919.)
+  return F.conv2d(input, weight, bias, self.stride,
+/cluster/tufts/apps/class/tools/cs137/2026spring/bin/python: line 28: 3942026 Killed                  singularity exec $OPTIONS --overlay $OVERLAY "$IMAGE_DIR/$IMAGE" "$PROGRAM" "$@"
+slurmstepd: error: Detected 2 oom_kill events in StepId=312214.batch. Some of the step tasks have been OOM Killed.

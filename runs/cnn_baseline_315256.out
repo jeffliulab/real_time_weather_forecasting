@@ -1,0 +1,22 @@
+==========================================
+Model: cnn_baseline
+Extra args: --epochs 50
+Node: pax023
+GPU: NVIDIA L40S
+Date: Sun Mar 15 09:25:17 AM EDT 2026
+==========================================
+Model: cnn_baseline
+Device: cuda
+Output: /cluster/tufts/c26sp1cs0137/pliu07/assignment2/runs/cnn_baseline
+Parameters: 11,325,062
+
+Training for 50 epochs...
+======================================================================
+  [epoch 0] NaN loss at batch 72, skipping
+  [epoch 0] NaN loss at batch 77, skipping
+  [train] batch 200/1611 loss=1.1233
+  [epoch 0] NaN loss at batch 334, skipping
+  [train] batch 400/1611 loss=0.9977
+  [epoch 0] NaN loss at batch 569, skipping
+  [train] batch 600/1611 loss=0.9416
+  [train] batch 800/1611 loss=0.9373

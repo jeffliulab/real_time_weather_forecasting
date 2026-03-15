@@ -1,0 +1,14 @@
+==========================================
+Model: cnn_baseline
+Extra args: 
+Node: pax011
+GPU: NVIDIA H200
+Date: Fri Mar 13 03:08:20 PM EDT 2026
+==========================================
+Model: cnn_baseline
+Device: cuda
+Output: /cluster/tufts/c26sp1cs0137/pliu07/assignment2/runs/cnn_baseline
+Parameters: 11,325,062
+
+Training for 30 epochs...
+======================================================================

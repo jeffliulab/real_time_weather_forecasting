@@ -1,0 +1,564 @@
+==========================================
+Model: cnn_baseline
+Extra args: 
+Node: pax007
+GPU: NVIDIA A100 80GB PCIe
+Date: Fri Mar 13 03:31:22 PM EDT 2026
+==========================================
+Model: cnn_baseline
+Device: cuda
+Output: /cluster/tufts/c26sp1cs0137/pliu07/assignment2/runs/cnn_baseline
+Parameters: 11,325,062
+
+Training for 30 epochs...
+======================================================================
+  [train] batch 200/1611 loss=0.9344
+  [epoch 0] NaN loss at batch 274, skipping
+  [epoch 0] NaN loss at batch 296, skipping
+  [train] batch 400/1611 loss=0.9027
+  [train] batch 600/1611 loss=0.9058
+  [epoch 0] NaN loss at batch 620, skipping
+  [epoch 0] NaN loss at batch 642, skipping
+  [train] batch 800/1611 loss=0.8860
+  [train] batch 1000/1611 loss=0.8617
+  [epoch 0] NaN loss at batch 1096, skipping
+  [train] batch 1200/1611 loss=0.8628
+  [epoch 0] NaN loss at batch 1299, skipping
+  [train] batch 1400/1611 loss=0.8526
+  [epoch 0] NaN loss at batch 1426, skipping
+  [train] batch 1600/1611 loss=0.8878
+  [train] batch 1611/1611 loss=0.8943
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch   0 | train=0.8943 val=0.8633 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.940 AUC=0.685 | lr=1.0e-03 t=1126s *best*
+  [train] batch 200/1611 loss=0.9831
+  [epoch 1] NaN loss at batch 200, skipping
+  [epoch 1] NaN loss at batch 241, skipping
+  [train] batch 400/1611 loss=0.8724
+  [epoch 1] NaN loss at batch 465, skipping
+  [epoch 1] NaN loss at batch 487, skipping
+  [train] batch 600/1611 loss=0.8114
+  [train] batch 800/1611 loss=0.8104
+  [train] batch 1000/1611 loss=0.8049
+  [train] batch 1200/1611 loss=0.8029
+  [epoch 1] NaN loss at batch 1268, skipping
+  [epoch 1] NaN loss at batch 1353, skipping
+  [train] batch 1400/1611 loss=0.8133
+  [epoch 1] NaN loss at batch 1580, skipping
+  [train] batch 1600/1611 loss=0.8027
+  [train] batch 1611/1611 loss=0.8013
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch   1 | train=0.8013 val=0.7262 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.937 AUC=0.634 | lr=9.9e-04 t=1127s *best*
+  [epoch 2] NaN loss at batch 5, skipping
+  [train] batch 200/1611 loss=0.6694
+  [epoch 2] NaN loss at batch 222, skipping
+  [epoch 2] NaN loss at batch 348, skipping
+  [train] batch 400/1611 loss=0.7115
+  [epoch 2] NaN loss at batch 454, skipping
+  [epoch 2] NaN loss at batch 573, skipping
+  [train] batch 600/1611 loss=0.7191
+  [train] batch 800/1611 loss=0.7113
+  [epoch 2] NaN loss at batch 901, skipping
+  [train] batch 1000/1611 loss=0.7583
+  [epoch 2] NaN loss at batch 1019, skipping
+  [train] batch 1200/1611 loss=0.7711
+  [train] batch 1400/1611 loss=0.7594
+  [train] batch 1600/1611 loss=0.7535
+  [train] batch 1611/1611 loss=0.7516
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch   2 | train=0.7516 val=0.7130 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.993 AUC=0.701 | lr=9.8e-04 t=1131s *best*
+  [epoch 3] NaN loss at batch 133, skipping
+  [epoch 3] NaN loss at batch 195, skipping
+  [train] batch 200/1611 loss=0.7473
+  [epoch 3] NaN loss at batch 254, skipping
+  [epoch 3] NaN loss at batch 297, skipping
+  [epoch 3] NaN loss at batch 372, skipping
+  [epoch 3] NaN loss at batch 377, skipping
+  [train] batch 400/1611 loss=0.8110
+  [train] batch 600/1611 loss=0.7943
+  [epoch 3] NaN loss at batch 662, skipping
+  [train] batch 800/1611 loss=0.7607
+  [train] batch 1000/1611 loss=0.7377
+  [train] batch 1200/1611 loss=0.7300
+  [train] batch 1400/1611 loss=0.7251
+  [train] batch 1600/1611 loss=0.7119
+  [train] batch 1611/1611 loss=0.7123
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch   3 | train=0.7123 val=0.6679 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=4.005 AUC=0.744 | lr=9.6e-04 t=1128s *best*
+  [epoch 4] NaN loss at batch 43, skipping
+  [epoch 4] NaN loss at batch 44, skipping
+  [train] batch 200/1611 loss=0.6138
+  [train] batch 400/1611 loss=0.6358
+  [epoch 4] NaN loss at batch 500, skipping
+  [epoch 4] NaN loss at batch 577, skipping
+  [train] batch 600/1611 loss=0.6439
+  [epoch 4] NaN loss at batch 610, skipping
+  [train] batch 800/1611 loss=0.6423
+  [train] batch 1000/1611 loss=0.6489
+  [epoch 4] NaN loss at batch 1060, skipping
+  [train] batch 1200/1611 loss=0.6875
+  [epoch 4] NaN loss at batch 1236, skipping
+  [train] batch 1400/1611 loss=0.6870
+  [train] batch 1600/1611 loss=0.6841
+  [train] batch 1611/1611 loss=0.6862
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch   4 | train=0.6862 val=0.6612 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.944 AUC=0.710 | lr=9.3e-04 t=1128s *best*
+  [epoch 5] NaN loss at batch 14, skipping
+  [train] batch 200/1611 loss=0.5360
+  [epoch 5] NaN loss at batch 277, skipping
+  [train] batch 400/1611 loss=0.6325
+  [epoch 5] NaN loss at batch 586, skipping
+  [train] batch 600/1611 loss=0.6301
+  [train] batch 800/1611 loss=0.6894
+  [epoch 5] NaN loss at batch 955, skipping
+  [train] batch 1000/1611 loss=0.6813
+  [epoch 5] NaN loss at batch 1083, skipping
+  [epoch 5] NaN loss at batch 1094, skipping
+  [train] batch 1200/1611 loss=0.6694
+  [epoch 5] NaN loss at batch 1289, skipping
+  [train] batch 1400/1611 loss=0.6662
+  [train] batch 1600/1611 loss=0.6529
+  [train] batch 1611/1611 loss=0.6526
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch   5 | train=0.6526 val=0.6473 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.999 AUC=0.680 | lr=9.0e-04 t=1126s *best*
+  [epoch 6] NaN loss at batch 29, skipping
+  [train] batch 200/1611 loss=0.6701
+  [epoch 6] NaN loss at batch 205, skipping
+  [epoch 6] NaN loss at batch 361, skipping
+  [train] batch 400/1611 loss=0.6779
+  [train] batch 600/1611 loss=0.6902
+  [epoch 6] NaN loss at batch 733, skipping
+  [train] batch 800/1611 loss=0.6920
+  [train] batch 1000/1611 loss=0.6771
+  [train] batch 1200/1611 loss=0.6575
+  [epoch 6] NaN loss at batch 1368, skipping
+  [train] batch 1400/1611 loss=0.6468
+  [epoch 6] NaN loss at batch 1410, skipping
+  [epoch 6] NaN loss at batch 1531, skipping
+  [train] batch 1600/1611 loss=0.6341
+  [train] batch 1611/1611 loss=0.6346
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch   6 | train=0.6346 val=0.6672 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.995 AUC=0.717 | lr=8.7e-04 t=1121s
+  [epoch 7] NaN loss at batch 129, skipping
+  [train] batch 200/1611 loss=0.5161
+  [train] batch 400/1611 loss=0.5586
+  [epoch 7] NaN loss at batch 441, skipping
+  [epoch 7] NaN loss at batch 512, skipping
+  [epoch 7] NaN loss at batch 564, skipping
+  [train] batch 600/1611 loss=0.5628
+  [train] batch 800/1611 loss=0.6565
+  [epoch 7] NaN loss at batch 915, skipping
+  [train] batch 1000/1611 loss=0.6345
+  [train] batch 1200/1611 loss=0.6206
+  [train] batch 1400/1611 loss=0.6145
+  [epoch 7] NaN loss at batch 1481, skipping
+  [epoch 7] NaN loss at batch 1581, skipping
+  [train] batch 1600/1611 loss=0.6158
+  [train] batch 1611/1611 loss=0.6145
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch   7 | train=0.6145 val=0.6449 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=4.017 AUC=0.675 | lr=8.3e-04 t=1126s *best*
+  [train] batch 200/1611 loss=0.4719
+  [epoch 8] NaN loss at batch 209, skipping
+  [train] batch 400/1611 loss=0.5176
+  [epoch 8] NaN loss at batch 556, skipping
+  [train] batch 600/1611 loss=0.5804
+  [epoch 8] NaN loss at batch 648, skipping
+  [train] batch 800/1611 loss=0.5669
+  [epoch 8] NaN loss at batch 942, skipping
+  [epoch 8] NaN loss at batch 965, skipping
+  [train] batch 1000/1611 loss=0.5536
+  [train] batch 1200/1611 loss=0.5598
+  [train] batch 1400/1611 loss=0.5757
+  [epoch 8] NaN loss at batch 1495, skipping
+  [epoch 8] NaN loss at batch 1499, skipping
+  [train] batch 1600/1611 loss=0.5887
+  [train] batch 1611/1611 loss=0.5884
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch   8 | train=0.5884 val=0.6364 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.965 AUC=0.724 | lr=7.9e-04 t=1113s *best*
+  [epoch 9] NaN loss at batch 184, skipping
+  [train] batch 200/1611 loss=0.4695
+  [train] batch 400/1611 loss=0.4964
+  [epoch 9] NaN loss at batch 418, skipping
+  [train] batch 600/1611 loss=0.5382
+  [train] batch 800/1611 loss=0.5312
+  [epoch 9] NaN loss at batch 874, skipping
+  [train] batch 1000/1611 loss=0.5647
+  [epoch 9] NaN loss at batch 1038, skipping
+  [train] batch 1200/1611 loss=0.5679
+  [epoch 9] NaN loss at batch 1249, skipping
+  [train] batch 1400/1611 loss=0.5911
+  [epoch 9] NaN loss at batch 1410, skipping
+  [epoch 9] NaN loss at batch 1559, skipping
+  [train] batch 1600/1611 loss=0.5798
+  [train] batch 1611/1611 loss=0.5793
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch   9 | train=0.5793 val=0.6405 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.976 AUC=0.709 | lr=7.5e-04 t=1016s
+  [epoch 10] NaN loss at batch 57, skipping
+  [train] batch 200/1611 loss=0.4721
+  [epoch 10] NaN loss at batch 331, skipping
+  [train] batch 400/1611 loss=0.5846
+  [epoch 10] NaN loss at batch 481, skipping
+  [train] batch 600/1611 loss=0.5800
+  [epoch 10] NaN loss at batch 743, skipping
+  [train] batch 800/1611 loss=0.5999
+  [epoch 10] NaN loss at batch 917, skipping
+  [train] batch 1000/1611 loss=0.5777
+  [epoch 10] NaN loss at batch 1090, skipping
+  [train] batch 1200/1611 loss=0.5909
+  [epoch 10] NaN loss at batch 1249, skipping
+  [train] batch 1400/1611 loss=0.5742
+  [train] batch 1600/1611 loss=0.5657
+  [train] batch 1611/1611 loss=0.5646
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  10 | train=0.5646 val=0.6285 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.997 AUC=0.719 | lr=7.0e-04 t=1001s *best*
+  [epoch 11] NaN loss at batch 119, skipping
+  [epoch 11] NaN loss at batch 192, skipping
+  [train] batch 200/1611 loss=0.7236
+  [epoch 11] NaN loss at batch 242, skipping
+  [train] batch 400/1611 loss=0.6963
+  [train] batch 600/1611 loss=0.6175
+  [train] batch 800/1611 loss=0.5831
+  [train] batch 1000/1611 loss=0.5612
+  [train] batch 1200/1611 loss=0.5471
+  [epoch 11] NaN loss at batch 1231, skipping
+  [epoch 11] NaN loss at batch 1257, skipping
+  [epoch 11] NaN loss at batch 1299, skipping
+  [train] batch 1400/1611 loss=0.5498
+  [epoch 11] NaN loss at batch 1480, skipping
+  [train] batch 1600/1611 loss=0.5429
+  [train] batch 1611/1611 loss=0.5417
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  11 | train=0.5417 val=0.6360 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.990 AUC=0.685 | lr=6.5e-04 t=1014s
+  [train] batch 200/1611 loss=0.5196
+  [epoch 12] NaN loss at batch 205, skipping
+  [epoch 12] NaN loss at batch 294, skipping
+  [train] batch 400/1611 loss=0.4947
+  [epoch 12] NaN loss at batch 531, skipping
+  [train] batch 600/1611 loss=0.4913
+  [epoch 12] NaN loss at batch 615, skipping
+  [epoch 12] NaN loss at batch 735, skipping
+  [train] batch 800/1611 loss=0.4883
+  [train] batch 1000/1611 loss=0.5110
+  [epoch 12] NaN loss at batch 1065, skipping
+  [train] batch 1200/1611 loss=0.5070
+  [epoch 12] NaN loss at batch 1364, skipping
+  [train] batch 1400/1611 loss=0.5208
+  [train] batch 1600/1611 loss=0.5099
+  [train] batch 1611/1611 loss=0.5102
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  12 | train=0.5102 val=0.6568 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.988 AUC=0.715 | lr=6.0e-04 t=1012s
+  [train] batch 200/1611 loss=0.5692
+  [train] batch 400/1611 loss=0.5086
+  [train] batch 600/1611 loss=0.5106
+  [epoch 13] NaN loss at batch 675, skipping
+  [epoch 13] NaN loss at batch 691, skipping
+  [train] batch 800/1611 loss=0.4959
+  [epoch 13] NaN loss at batch 834, skipping
+  [epoch 13] NaN loss at batch 886, skipping
+  [epoch 13] NaN loss at batch 998, skipping
+  [train] batch 1000/1611 loss=0.4873
+  [epoch 13] NaN loss at batch 1191, skipping
+  [train] batch 1200/1611 loss=0.4888
+  [train] batch 1400/1611 loss=0.4980
+  [epoch 13] NaN loss at batch 1488, skipping
+  [train] batch 1600/1611 loss=0.5017
+  [train] batch 1611/1611 loss=0.5008
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  13 | train=0.5008 val=0.6281 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.967 AUC=0.731 | lr=5.5e-04 t=1018s *best*
+  [epoch 14] NaN loss at batch 165, skipping
+  [train] batch 200/1611 loss=0.5857
+  [train] batch 400/1611 loss=0.5576
+  [train] batch 600/1611 loss=0.5112
+  [train] batch 800/1611 loss=0.5169
+  [epoch 14] NaN loss at batch 820, skipping
+  [epoch 14] NaN loss at batch 902, skipping
+  [epoch 14] NaN loss at batch 905, skipping
+  [train] batch 1000/1611 loss=0.5076
+  [train] batch 1200/1611 loss=0.4924
+  [train] batch 1400/1611 loss=0.4913
+  [epoch 14] NaN loss at batch 1432, skipping
+  [epoch 14] NaN loss at batch 1452, skipping
+  [epoch 14] NaN loss at batch 1483, skipping
+  [train] batch 1600/1611 loss=0.4855
+  [train] batch 1611/1611 loss=0.4846
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  14 | train=0.4846 val=0.6331 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.959 AUC=0.718 | lr=5.0e-04 t=1018s
+  [epoch 15] NaN loss at batch 33, skipping
+  [train] batch 200/1611 loss=0.3982
+  [train] batch 400/1611 loss=0.4485
+  [train] batch 600/1611 loss=0.4412
+  [epoch 15] NaN loss at batch 641, skipping
+  [epoch 15] NaN loss at batch 644, skipping
+  [train] batch 800/1611 loss=0.4468
+  [epoch 15] NaN loss at batch 829, skipping
+  [epoch 15] NaN loss at batch 963, skipping
+  [train] batch 1000/1611 loss=0.4447
+  [train] batch 1200/1611 loss=0.4835
+  [epoch 15] NaN loss at batch 1339, skipping
+  [train] batch 1400/1611 loss=0.4726
+  [epoch 15] NaN loss at batch 1499, skipping
+  [train] batch 1600/1611 loss=0.4674
+  [train] batch 1611/1611 loss=0.4665
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  15 | train=0.4665 val=0.6207 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.987 AUC=0.716 | lr=4.5e-04 t=1016s *best*
+  [train] batch 200/1611 loss=0.7356
+  [epoch 16] NaN loss at batch 343, skipping
+  [train] batch 400/1611 loss=0.5414
+  [train] batch 600/1611 loss=0.4818
+  [train] batch 800/1611 loss=0.4603
+  [epoch 16] NaN loss at batch 815, skipping
+  [epoch 16] NaN loss at batch 922, skipping
+  [train] batch 1000/1611 loss=0.4506
+  [epoch 16] NaN loss at batch 1008, skipping
+  [train] batch 1200/1611 loss=0.4754
+  [epoch 16] NaN loss at batch 1296, skipping
+  [epoch 16] NaN loss at batch 1341, skipping
+  [train] batch 1400/1611 loss=0.4728
+  [epoch 16] NaN loss at batch 1525, skipping
+  [train] batch 1600/1611 loss=0.4589
+  [train] batch 1611/1611 loss=0.4578
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  16 | train=0.4578 val=0.6337 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.966 AUC=0.724 | lr=4.0e-04 t=1004s
+  [epoch 17] NaN loss at batch 11, skipping
+  [train] batch 200/1611 loss=0.3627
+  [epoch 17] NaN loss at batch 295, skipping
+  [train] batch 400/1611 loss=0.4296
+  [epoch 17] NaN loss at batch 428, skipping
+  [train] batch 600/1611 loss=0.4638
+  [train] batch 800/1611 loss=0.4480
+  [epoch 17] NaN loss at batch 819, skipping
+  [train] batch 1000/1611 loss=0.4560
+  [epoch 17] NaN loss at batch 1138, skipping
+  [epoch 17] NaN loss at batch 1155, skipping
+  [epoch 17] NaN loss at batch 1180, skipping
+  [train] batch 1200/1611 loss=0.4357
+  [train] batch 1400/1611 loss=0.4360
+  [train] batch 1600/1611 loss=0.4420
+  [train] batch 1611/1611 loss=0.4456
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  17 | train=0.4456 val=0.6291 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.932 AUC=0.739 | lr=3.5e-04 t=1027s
+  [epoch 18] NaN loss at batch 183, skipping
+  [train] batch 200/1611 loss=0.5493
+  [epoch 18] NaN loss at batch 330, skipping
+  [train] batch 400/1611 loss=0.4528
+  [epoch 18] NaN loss at batch 572, skipping
+  [train] batch 600/1611 loss=0.4253
+  [train] batch 800/1611 loss=0.4011
+  [train] batch 1000/1611 loss=0.4110
+  [epoch 18] NaN loss at batch 1025, skipping
+  [epoch 18] NaN loss at batch 1088, skipping
+  [train] batch 1200/1611 loss=0.4041
+  [epoch 18] NaN loss at batch 1241, skipping
+  [epoch 18] NaN loss at batch 1295, skipping
+  [train] batch 1400/1611 loss=0.4016
+  [train] batch 1600/1611 loss=0.4237
+  [train] batch 1611/1611 loss=0.4246
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  18 | train=0.4246 val=0.6260 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.973 AUC=0.714 | lr=3.0e-04 t=1027s
+  [train] batch 200/1611 loss=0.3961
+  [epoch 19] NaN loss at batch 250, skipping
+  [train] batch 400/1611 loss=0.4065
+  [epoch 19] NaN loss at batch 523, skipping
+  [train] batch 600/1611 loss=0.3808
+  [epoch 19] NaN loss at batch 700, skipping
+  [train] batch 800/1611 loss=0.4530
+  [epoch 19] NaN loss at batch 884, skipping
+  [epoch 19] NaN loss at batch 931, skipping
+  [train] batch 1000/1611 loss=0.4533
+  [epoch 19] NaN loss at batch 1007, skipping
+  [train] batch 1200/1611 loss=0.4351
+  [epoch 19] NaN loss at batch 1331, skipping
+  [train] batch 1400/1611 loss=0.4216
+  [train] batch 1600/1611 loss=0.4221
+  [train] batch 1611/1611 loss=0.4221
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  19 | train=0.4221 val=0.6352 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.961 AUC=0.702 | lr=2.5e-04 t=1030s
+  [epoch 20] NaN loss at batch 43, skipping
+  [epoch 20] NaN loss at batch 156, skipping
+  [train] batch 200/1611 loss=0.3982
+  [epoch 20] NaN loss at batch 284, skipping
+  [train] batch 400/1611 loss=0.4971
+  [train] batch 600/1611 loss=0.4662
+  [epoch 20] NaN loss at batch 703, skipping
+  [train] batch 800/1611 loss=0.4524
+  [epoch 20] NaN loss at batch 909, skipping
+  [train] batch 1000/1611 loss=0.4330
+  [epoch 20] NaN loss at batch 1047, skipping
+  [train] batch 1200/1611 loss=0.4249
+  [epoch 20] NaN loss at batch 1284, skipping
+  [train] batch 1400/1611 loss=0.4290
+  [train] batch 1600/1611 loss=0.4283
+  [train] batch 1611/1611 loss=0.4272
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  20 | train=0.4272 val=0.6368 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.971 AUC=0.724 | lr=2.1e-04 t=1049s
+  [epoch 21] NaN loss at batch 15, skipping
+  [train] batch 200/1611 loss=0.2885
+  [train] batch 400/1611 loss=0.3707
+  [epoch 21] NaN loss at batch 523, skipping
+  [train] batch 600/1611 loss=0.3866
+  [epoch 21] NaN loss at batch 764, skipping
+  [train] batch 800/1611 loss=0.3784
+  [epoch 21] NaN loss at batch 986, skipping
+  [train] batch 1000/1611 loss=0.3972
+  [epoch 21] NaN loss at batch 1039, skipping
+  [train] batch 1200/1611 loss=0.4210
+  [epoch 21] NaN loss at batch 1232, skipping
+  [train] batch 1400/1611 loss=0.4243
+  [epoch 21] NaN loss at batch 1581, skipping
+  [train] batch 1600/1611 loss=0.4136
+  [train] batch 1611/1611 loss=0.4126
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  21 | train=0.4126 val=0.6299 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.977 AUC=0.723 | lr=1.7e-04 t=1042s
+  [train] batch 200/1611 loss=0.4383
+  [epoch 22] NaN loss at batch 207, skipping
+  [epoch 22] NaN loss at batch 287, skipping
+  [train] batch 400/1611 loss=0.4693
+  [epoch 22] NaN loss at batch 402, skipping
+  [epoch 22] NaN loss at batch 427, skipping
+  [epoch 22] NaN loss at batch 460, skipping
+  [epoch 22] NaN loss at batch 487, skipping
+  [train] batch 600/1611 loss=0.4944
+  [train] batch 800/1611 loss=0.4659
+  [train] batch 1000/1611 loss=0.4257
+  [train] batch 1200/1611 loss=0.4111
+  [epoch 22] NaN loss at batch 1326, skipping
+  [train] batch 1400/1611 loss=0.4218
+  [train] batch 1600/1611 loss=0.4132
+  [train] batch 1611/1611 loss=0.4124
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  22 | train=0.4124 val=0.6322 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.986 AUC=0.708 | lr=1.3e-04 t=1037s
+  [epoch 23] NaN loss at batch 69, skipping
+  [train] batch 200/1611 loss=0.3676
+  [train] batch 400/1611 loss=0.3464
+  [train] batch 600/1611 loss=0.3705
+  [epoch 23] NaN loss at batch 795, skipping
+  [train] batch 800/1611 loss=0.3909
+  [epoch 23] NaN loss at batch 830, skipping
+  [train] batch 1000/1611 loss=0.3816
+  [epoch 23] NaN loss at batch 1181, skipping
+  [train] batch 1200/1611 loss=0.4132
+  [epoch 23] NaN loss at batch 1246, skipping
+  [epoch 23] NaN loss at batch 1357, skipping
+  [train] batch 1400/1611 loss=0.3980
+  [epoch 23] NaN loss at batch 1520, skipping
+  [train] batch 1600/1611 loss=0.3880
+  [train] batch 1611/1611 loss=0.3872
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  23 | train=0.3872 val=0.6325 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.967 AUC=0.721 | lr=9.5e-05 t=1036s
+  [train] batch 200/1611 loss=0.3280
+  [epoch 24] NaN loss at batch 323, skipping
+  [train] batch 400/1611 loss=0.3338
+  [epoch 24] NaN loss at batch 503, skipping
+  [epoch 24] NaN loss at batch 589, skipping
+  [train] batch 600/1611 loss=0.3430
+  [epoch 24] NaN loss at batch 731, skipping
+  [train] batch 800/1611 loss=0.3748
+  [epoch 24] NaN loss at batch 813, skipping
+  [epoch 24] NaN loss at batch 967, skipping
+  [train] batch 1000/1611 loss=0.4443
+  [train] batch 1200/1611 loss=0.4223
+  [train] batch 1400/1611 loss=0.4075
+  [epoch 24] NaN loss at batch 1488, skipping
+  [train] batch 1600/1611 loss=0.3980
+  [train] batch 1611/1611 loss=0.4013
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  24 | train=0.4013 val=0.6372 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.980 AUC=0.713 | lr=6.7e-05 t=1041s
+  [train] batch 200/1611 loss=0.3110
+  [epoch 25] NaN loss at batch 295, skipping
+  [train] batch 400/1611 loss=0.2995
+  [epoch 25] NaN loss at batch 507, skipping
+  [train] batch 600/1611 loss=0.3565
+  [epoch 25] NaN loss at batch 747, skipping
+  [epoch 25] NaN loss at batch 790, skipping
+  [train] batch 800/1611 loss=0.3362
+  [epoch 25] NaN loss at batch 815, skipping
+  [epoch 25] NaN loss at batch 885, skipping
+  [train] batch 1000/1611 loss=0.3289
+  [train] batch 1200/1611 loss=0.3559
+  [train] batch 1400/1611 loss=0.3605
+  [epoch 25] NaN loss at batch 1572, skipping
+  [train] batch 1600/1611 loss=0.3695
+  [train] batch 1611/1611 loss=0.3687
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  25 | train=0.3687 val=0.6329 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.994 AUC=0.712 | lr=4.3e-05 t=1042s
+  [epoch 26] NaN loss at batch 34, skipping
+  [epoch 26] NaN loss at batch 136, skipping
+  [train] batch 200/1611 loss=0.3880
+  [epoch 26] NaN loss at batch 207, skipping
+  [train] batch 400/1611 loss=0.3217
+  [train] batch 600/1611 loss=0.3173
+  [train] batch 800/1611 loss=0.3107
+  [epoch 26] NaN loss at batch 954, skipping
+  [train] batch 1000/1611 loss=0.3439
+  [epoch 26] NaN loss at batch 1193, skipping
+  [train] batch 1200/1611 loss=0.3770
+  [epoch 26] NaN loss at batch 1269, skipping
+  [epoch 26] NaN loss at batch 1340, skipping
+  [train] batch 1400/1611 loss=0.3712
+  [train] batch 1600/1611 loss=0.3807
+  [train] batch 1611/1611 loss=0.3850
+  [val] batch 500/1098
+  [val] batch 1000/1098
+  [val] batch 1098/1098
+Epoch  26 | train=0.3850 val=0.6372 | TMP=nan RH=nan UGRD=nan VGRD=nan GUST=nan APCP_1=3.980 AUC=0.723 | lr=2.4e-05 t=1037s
+  [train] batch 200/1611 loss=0.5565
+  [epoch 27] NaN loss at batch 365, skipping
+  [train] batch 400/1611 loss=0.4428
+  [epoch 27] NaN loss at batch 585, skipping
+  [train] batch 600/1611 loss=0.4355
+  [train] batch 800/1611 loss=0.4139
+  [epoch 27] NaN loss at batch 918, skipping
+  [epoch 27] NaN loss at batch 971, skipping
+  [train] batch 1000/1611 loss=0.4121
+  [train] batch 1200/1611 loss=0.4146

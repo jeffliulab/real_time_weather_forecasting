@@ -1,0 +1,1 @@
+epoch,train_loss,val_loss,val_rmse_TMP@2m_above_ground,val_rmse_RH@2m_above_ground,val_rmse_UGRD@10m_above_ground,val_rmse_VGRD@10m_above_ground,val_rmse_GUST@surface,val_rmse_APCP_1hr_acc_fcst@surface,val_rmse_apcp_rain,val_auc,lr,epoch_time
