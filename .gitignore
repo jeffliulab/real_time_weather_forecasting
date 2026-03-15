@@ -26,18 +26,20 @@ env/
 *.ckpt
 *.safetensors
 checkpoints/
-runs/
 
 # Raw data (too large for git)
 data/
 dataset/
 
 # Logs and outputs
-logs/
+/logs/
 wandb/
 mlruns/
 tensorboard/
 *.log
+
+# runs/ — track logs/figures/.out but NOT checkpoints
+runs/*/checkpoints/
 
 # OS files
 .DS_Store
@@ -59,10 +61,14 @@ Desktop.ini
 *.fls
 *.lof
 *.lot
-*.out
 *.toc
 *.synctex.gz
 *.synctex(busy)
+
+# Exclude LaTeX .out but NOT SLURM .out under runs/
+*.out
+!runs/*.out
+!runs/*.err
 
 # Compiled PDF (keep source .tex, regenerate PDF)
 # proposal.pdf
