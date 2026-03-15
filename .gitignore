@@ -72,5 +72,9 @@ Desktop.ini
 *.key
 *.pem
 
+# Claude memory
+.claude/
+
 # personal usage
 项目文档（初始）
+SSH_TUFTS.md
