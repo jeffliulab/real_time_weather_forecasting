@@ -1,0 +1,11 @@
+torch>=2.1.0
+torchvision
+numpy
+matplotlib
+gradio>=5.0
+herbie-data>=2024.1
+cfgrib
+xarray
+eccodes
+cartopy
+scipy
