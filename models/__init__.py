@@ -10,12 +10,16 @@ from .cnn_baseline import BaselineCNN
 from .cnn_multi_frame import MultiFrameCNN
 from .cnn_3d import CNN3D
 from .vit import WeatherViT
+from .resnet_baseline import ResNet18Baseline
+from .convnext_baseline import ConvNeXtBaseline
 
 MODEL_REGISTRY = {
     "cnn_baseline": BaselineCNN,
     "cnn_multi_frame": MultiFrameCNN,
     "cnn_3d": CNN3D,
     "vit": WeatherViT,
+    "resnet18": ResNet18Baseline,
+    "convnext_tiny": ConvNeXtBaseline,
 }
 
 # Default model-specific settings
@@ -24,6 +28,8 @@ MODEL_DEFAULTS = {
     "cnn_multi_frame": {"n_frames": 4, "stack_mode": "channel"},
     "cnn_3d": {"n_frames": 4, "stack_mode": "temporal"},
     "vit": {"n_frames": 1, "stack_mode": "channel"},
+    "resnet18": {"n_frames": 1, "stack_mode": "channel"},
+    "convnext_tiny": {"n_frames": 1, "stack_mode": "channel"},
 }
 
 

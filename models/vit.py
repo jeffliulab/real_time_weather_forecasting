@@ -71,7 +71,8 @@ class WeatherViT(nn.Module):
     """
 
     def __init__(self, n_input_channels=42, n_targets=6, patch_size=15,
-                 embed_dim=256, n_layers=6, n_heads=8, mlp_ratio=4.0, dropout=0.1):
+                 embed_dim=256, n_layers=6, n_heads=8, mlp_ratio=4.0, dropout=0.1,
+                 **kwargs):
         super().__init__()
         self.patch_size = patch_size
         img_h, img_w = 450, 450  # pad to square
