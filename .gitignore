@@ -6,8 +6,8 @@ dist/
 build/
 *.egg
 
-# Files
-Files_Personal_Use
+# 本地文件（个人资料、提交材料等）
+本地文件/
 
 
 # Virtual environments
@@ -81,7 +81,8 @@ Desktop.ini
 # Claude memory
 .claude/
 
-# personal usage
-项目文档（初始）
-SSH_TUFTS.md
-个人用信息
+# Other projects (exist on remote but not part of this repo)
+generative_agents/
+
+# Secrets / tokens
+.hf_token
