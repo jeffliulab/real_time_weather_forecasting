@@ -1,0 +1,31 @@
+======================================================================
+SPATIAL SALIENCY ANALYSIS
+Jumbo Statue grid position: row=177, col=263
+======================================================================
+
+--- Directional Saliency (mean, relative to Jumbo) ---
+  North: 0.000004  (0.75x avg)
+  South: 0.000008  (1.38x avg)
+  West:  0.000006  (1.14x avg)
+  East:  0.000004  (0.81x avg)
+  Overall mean: 0.000006
+  -> Western regions contribute more than eastern (consistent with prevailing westerlies)
+  -> Southern regions contribute more (possible subtropical moisture transport)
+
+--- Saliency vs Distance from Jumbo ---
+       Range (cells)      ~km     Mean Sal      Rel
+       0-25            0-75 km  0.000003    0.57x
+      25-50           75-150km  0.000003    0.55x
+      50-100         150-300km  0.000003    0.59x
+     100-150         300-450km  0.000004    0.66x
+     150-200         450-600km  0.000006    1.01x
+     200-300         600-900km  0.000007    1.26x
+
+--- Per-Target Directional Breakdown ---
+  Target                    North      South       West       East
+  Temperature            0.000002   0.000002   0.000002   0.000002
+  Humidity               0.000003   0.000004   0.000004   0.000002
+  U-Wind                 0.000003   0.000003   0.000003   0.000002
+  V-Wind                 0.000003   0.000003   0.000003   0.000002
+  Gust                   0.000002   0.000003   0.000003   0.000002
+  Precip.                0.000001   0.000001   0.000001   0.000001

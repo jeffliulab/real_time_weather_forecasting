@@ -1,0 +1,141 @@
+==========================================
+Evaluating all Part 1 models on test set
+Node: pax004
+GPU: N/A
+Date: Tue Mar 24 07:55:14 PM EDT 2026
+==========================================
+Loading dataset metadata and targets ...
+  Full dataset : 2018-07-13T00:00:00.000000000  ->  2021-07-11T23:00:00.000000000  (26280 steps)
+  Target vars  : ['TMP@2m_above_ground', 'RH@2m_above_ground', 'UGRD@10m_above_ground', 'VGRD@10m_above_ground', 'GUST@surface', 'APCP_1hr_acc_fcst@surface']
+
+Test year: 2021, # samples: 4584
+
+=================================================================
+Evaluating: stub
+=================================================================
+  Model class: StubModel
+   4000/4584 (skipped 1176)
+   4584/4584 (skipped 1272)
+  Evaluated 3312 samples (skipped 1272)
+  TMP@2m_above_ground                         RMSE:   4.8551
+  RH@2m_above_ground                          RMSE:  23.0090
+  UGRD@10m_above_ground                       RMSE:   3.7275
+  VGRD@10m_above_ground                       RMSE:   2.8920
+  GUST@surface                                RMSE:   4.8696
+  APCP_1hr_acc_fcst@surface                   RMSE (>2mm):   4.6183
+  AUC                                         0.5062
+
+=================================================================
+Evaluating: baseline_cnn
+=================================================================
+Loaded checkpoint: /cluster/tufts/c26sp1cs0137/pliu07/assignment2/runs/cnn_baseline/checkpoints/best.pt
+  Model class: EvalWrapper
+   4000/4584 (skipped 1176)
+   4584/4584 (skipped 1272)
+  Evaluated 3312 samples (skipped 1272)
+  TMP@2m_above_ground                         RMSE:   3.9960
+  RH@2m_above_ground                          RMSE:  15.8920
+  UGRD@10m_above_ground                       RMSE:   2.5636
+  VGRD@10m_above_ground                       RMSE:   2.2255
+  GUST@surface                                RMSE:   3.5831
+  APCP_1hr_acc_fcst@surface                   RMSE (>2mm):   4.5569
+  AUC                                         0.7378
+
+=================================================================
+Evaluating: resnet18
+=================================================================
+Loaded checkpoint: /cluster/tufts/c26sp1cs0137/pliu07/assignment2/runs/resnet18/checkpoints/best.pt
+  Model class: EvalWrapper
+   4000/4584 (skipped 1176)
+   4584/4584 (skipped 1272)
+  Evaluated 3312 samples (skipped 1272)
+  TMP@2m_above_ground                         RMSE:   3.5416
+  RH@2m_above_ground                          RMSE:  15.6811
+  UGRD@10m_above_ground                       RMSE:   2.7035
+  VGRD@10m_above_ground                       RMSE:   2.3426
+  GUST@surface                                RMSE:   3.5983
+  APCP_1hr_acc_fcst@surface                   RMSE (>2mm):   4.5311
+  AUC                                         0.7680
+
+=================================================================
+Evaluating: convnext_tiny
+=================================================================
+Loaded checkpoint: /cluster/tufts/c26sp1cs0137/pliu07/assignment2/runs/convnext_tiny/checkpoints/best.pt
+  Model class: EvalWrapper
+   4000/4584 (skipped 1176)
+   4584/4584 (skipped 1272)
+  Evaluated 3312 samples (skipped 1272)
+  TMP@2m_above_ground                         RMSE:   3.6566
+  RH@2m_above_ground                          RMSE:  15.8500
+  UGRD@10m_above_ground                       RMSE:   2.5357
+  VGRD@10m_above_ground                       RMSE:   2.1734
+  GUST@surface                                RMSE:   3.6458
+  APCP_1hr_acc_fcst@surface                   RMSE (>2mm):   4.5509
+  AUC                                         0.6917
+
+=================================================================
+Evaluating: vit
+=================================================================
+Loaded checkpoint: /cluster/tufts/c26sp1cs0137/pliu07/assignment2/runs/vit/checkpoints/best.pt
+  Model class: EvalWrapper
+   4000/4584 (skipped 1176)
+   4584/4584 (skipped 1272)
+  Evaluated 3312 samples (skipped 1272)
+  TMP@2m_above_ground                         RMSE:   4.0604
+  RH@2m_above_ground                          RMSE:  16.4541
+  UGRD@10m_above_ground                       RMSE:   2.5879
+  VGRD@10m_above_ground                       RMSE:   2.2114
+  GUST@surface                                RMSE:   3.5674
+  APCP_1hr_acc_fcst@surface                   RMSE (>2mm):   4.5003
+  AUC                                         0.7755
+
+=================================================================
+Evaluating: cnn_multi_frame
+=================================================================
+Loaded checkpoint: /cluster/tufts/c26sp1cs0137/pliu07/assignment2/runs/cnn_multi_frame/checkpoints/best.pt
+  Model class: EvalWrapper
+  Multi-frame model: n_frames=4
+   4000/4584 (skipped 1677)
+   4584/4584 (skipped 1845)
+  Evaluated 2739 samples (skipped 1845)
+  TMP@2m_above_ground                         RMSE:   4.5497
+  RH@2m_above_ground                          RMSE:  18.4056
+  UGRD@10m_above_ground                       RMSE:   2.6183
+  VGRD@10m_above_ground                       RMSE:   2.4531
+  GUST@surface                                RMSE:   3.6164
+  APCP_1hr_acc_fcst@surface                   RMSE (>2mm):   4.7575
+  AUC                                         0.6523
+
+=================================================================
+Evaluating: cnn_3d
+=================================================================
+Loaded checkpoint: /cluster/tufts/c26sp1cs0137/pliu07/assignment2/runs/cnn_3d/checkpoints/best.pt
+  Model class: EvalWrapper
+  Multi-frame model: n_frames=4
+   4000/4584 (skipped 1677)
+   4584/4584 (skipped 1845)
+  Evaluated 2739 samples (skipped 1845)
+  TMP@2m_above_ground                         RMSE:   4.7576
+  RH@2m_above_ground                          RMSE:  17.4395
+  UGRD@10m_above_ground                       RMSE:   2.6140
+  VGRD@10m_above_ground                       RMSE:   2.3198
+  GUST@surface                                RMSE:   3.5789
+  APCP_1hr_acc_fcst@surface                   RMSE (>2mm):   4.7537
+  AUC                                         0.6684
+
+
+==========================================================================================
+COMPARISON TABLE  --  Test Year: 2021
+==========================================================================================
+Model                       TMP         RH       UGRD       VGRD       GUST APCP(>2mm)      AUC
+------------------------------------------------------------------------------------------
+stub                   4.8551    23.0090     3.7275     2.8920     4.8696     4.6183   0.5062  
+baseline_cnn           3.9960    15.8920     2.5636     2.2255     3.5831     4.5569   0.7378  
+resnet18               3.5416 *  15.6811 *   2.7035     2.3426     3.5983     4.5311   0.7680  
+convnext_tiny          3.6566    15.8500     2.5357 *   2.1734 *   3.6458     4.5509   0.6917  
+vit                    4.0604    16.4541     2.5879     2.2114     3.5674 *   4.5003 * 0.7755 *
+cnn_multi_frame        4.5497    18.4056     2.6183     2.4531     3.6164     4.7575   0.6523  
+cnn_3d                 4.7576    17.4395     2.6140     2.3198     3.5789     4.7537   0.6684  
+------------------------------------------------------------------------------------------
+* = best in column
+==========================================================================================

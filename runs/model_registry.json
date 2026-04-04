@@ -1,0 +1,42 @@
+{
+  "_description": "Model registry for comparing runs and selecting models for inference. Each entry records a training run's key metrics and checkpoint path. The inference system reads 'active_model' to determine which checkpoint to load.",
+  "_description_zh": "模型注册表，用于对比各次训练结果和推理系统选择模型。每条记录包含训练的关键指标和 checkpoint 路径。推理系统读取 active_model 字段决定加载哪个模型。",
+
+  "active_model": "cnn_baseline_1",
+
+  "models": {
+    "cnn_baseline_1": {
+      "architecture": "BaselineCNN",
+      "source_file": "models/cnn_baseline.py",
+      "run_dir": "runs/cnn_baseline_1",
+      "checkpoint": "runs/cnn_baseline_1/checkpoints/best.pt",
+      "report": "runs/cnn_baseline_1/train_1_report.md",
+      "parameters": 11325062,
+      "trained_epochs": 50,
+      "best_epoch": 11,
+      "train_date": "2026-03-15",
+      "gpu": "NVIDIA L40S",
+      "hyperparameters": {
+        "batch_size": 8,
+        "lr": 0.001,
+        "weight_decay": 0.0001,
+        "scheduler": "cosine",
+        "base_channels": 64,
+        "n_frames": 1,
+        "optimizer": "AdamW"
+      },
+      "val_metrics": {
+        "val_loss": 0.6177,
+        "rmse_TMP_K": 3.577,
+        "rmse_RH_pct": 14.978,
+        "rmse_UGRD_ms": 2.148,
+        "rmse_VGRD_ms": 1.935,
+        "rmse_GUST_ms": 3.368,
+        "rmse_APCP_cond_mm": 4.007,
+        "auc_rain": 0.679
+      },
+      "test_metrics": null,
+      "notes": "First successful training. Overfitting observed from epoch 12. No conv-layer dropout."
+    }
+  }
+}

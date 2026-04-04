@@ -1,0 +1,88 @@
+==========================================
+Evaluating all Part 1 models on test set
+Node: pax019
+GPU: N/A
+Date: Mon Mar 23 10:56:32 AM EDT 2026
+==========================================
+Loading dataset metadata and targets ...
+  Full dataset : 2018-07-13T00:00:00.000000000  ->  2021-07-11T23:00:00.000000000  (26280 steps)
+  Target vars  : ['TMP@2m_above_ground', 'RH@2m_above_ground', 'UGRD@10m_above_ground', 'VGRD@10m_above_ground', 'GUST@surface', 'APCP_1hr_acc_fcst@surface']
+
+Test year: 2021, # samples: 4584
+
+=================================================================
+Evaluating: stub
+=================================================================
+  Model class: StubModel
+   4000/4584 (skipped 1176)
+   4584/4584 (skipped 1272)
+  Evaluated 3312 samples (skipped 1272)
+  TMP@2m_above_ground                         RMSE:   4.8551
+  RH@2m_above_ground                          RMSE:  23.0090
+  UGRD@10m_above_ground                       RMSE:   3.7275
+  VGRD@10m_above_ground                       RMSE:   2.8920
+  GUST@surface                                RMSE:   4.8696
+  APCP_1hr_acc_fcst@surface                   RMSE (>2mm):   4.6183
+  AUC                                         0.5062
+
+=================================================================
+Evaluating: baseline_cnn
+=================================================================
+Loaded checkpoint: /cluster/tufts/c26sp1cs0137/pliu07/assignment2/runs/cnn_baseline/checkpoints/best.pt
+  Model class: EvalWrapper
+   4000/4584 (skipped 1176)
+   4584/4584 (skipped 1272)
+  Evaluated 3312 samples (skipped 1272)
+  TMP@2m_above_ground                         RMSE:   3.9960
+  RH@2m_above_ground                          RMSE:  15.8920
+  UGRD@10m_above_ground                       RMSE:   2.5636
+  VGRD@10m_above_ground                       RMSE:   2.2255
+  GUST@surface                                RMSE:   3.5831
+  APCP_1hr_acc_fcst@surface                   RMSE (>2mm):   4.5569
+  AUC                                         0.7378
+
+=================================================================
+Evaluating: resnet18
+=================================================================
+Loaded checkpoint: /cluster/tufts/c26sp1cs0137/pliu07/assignment2/runs/resnet18/checkpoints/best.pt
+  Model class: EvalWrapper
+   4000/4584 (skipped 1176)
+   4584/4584 (skipped 1272)
+  Evaluated 3312 samples (skipped 1272)
+  TMP@2m_above_ground                         RMSE:   3.5416
+  RH@2m_above_ground                          RMSE:  15.6811
+  UGRD@10m_above_ground                       RMSE:   2.7035
+  VGRD@10m_above_ground                       RMSE:   2.3426
+  GUST@surface                                RMSE:   3.5983
+  APCP_1hr_acc_fcst@surface                   RMSE (>2mm):   4.5311
+  AUC                                         0.7680
+
+=================================================================
+Evaluating: convnext_tiny
+=================================================================
+Loaded checkpoint: /cluster/tufts/c26sp1cs0137/pliu07/assignment2/runs/convnext_tiny/checkpoints/best.pt
+  Model class: EvalWrapper
+   4000/4584 (skipped 1176)
+   4584/4584 (skipped 1272)
+  Evaluated 3312 samples (skipped 1272)
+  TMP@2m_above_ground                         RMSE:   3.6566
+  RH@2m_above_ground                          RMSE:  15.8500
+  UGRD@10m_above_ground                       RMSE:   2.5357
+  VGRD@10m_above_ground                       RMSE:   2.1734
+  GUST@surface                                RMSE:   3.6458
+  APCP_1hr_acc_fcst@surface                   RMSE (>2mm):   4.5509
+  AUC                                         0.6917
+
+
+==========================================================================================
+COMPARISON TABLE  --  Test Year: 2021
+==========================================================================================
+Model                       TMP         RH       UGRD       VGRD       GUST APCP(>2mm)      AUC
+------------------------------------------------------------------------------------------
+stub                   4.8551    23.0090     3.7275     2.8920     4.8696     4.6183   0.5062  
+baseline_cnn           3.9960    15.8920     2.5636     2.2255     3.5831 *   4.5569   0.7378  
+resnet18               3.5416 *  15.6811 *   2.7035     2.3426     3.5983     4.5311 * 0.7680 *
+convnext_tiny          3.6566    15.8500     2.5357 *   2.1734 *   3.6458     4.5509   0.6917  
+------------------------------------------------------------------------------------------
+* = best in column
+==========================================================================================
