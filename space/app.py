@@ -15,7 +15,6 @@ from model_utils import run_forecast, load_model, AVAILABLE_MODELS
 from visualization import (
     get_static_maps,
     plot_temperature,
-    plot_temperature_placeholder,
 )
 
 logging.basicConfig(level=logging.INFO)
@@ -243,6 +242,10 @@ def _hero_html(r: dict, cycle_str: str, forecast_str: str, model_label: str) -> 
 def do_forecast(model_display: str, progress=gr.Progress()):
     model_name = _resolve_model(model_display)
 
+    # Render static basemaps on first call (lazy load to avoid startup timeout)
+    progress(0.01, desc="Rendering basemaps...")
+    sat_fig, street_fig = get_static_maps()
+
     progress(0.02, desc="Finding latest HRRR cycle...")
     try:
         input_array, cycle_time = fetch_hrrr_input(
@@ -266,18 +269,13 @@ def do_forecast(model_display: str, progress=gr.Progress()):
     temp_fig = plot_temperature(input_array, r, cycle_str, forecast_str)
     status = f"Forecast complete — HRRR cycle {cycle_str}"
 
-    return hero, temp_fig, status
+    return hero, sat_fig, street_fig, temp_fig, status
 
 
 # ── Build UI ──────────────────────────────────────────────────────────
 
-# Pre-render static maps at import time
-logger.info("Rendering static basemaps...")
-_sat_fig, _street_fig = get_static_maps()
-_temp_placeholder = plot_temperature_placeholder()
-logger.info("Basemaps ready.")
 
-with gr.Blocks(title="Tufts Jumbo Weather Forecast") as demo:
+with gr.Blocks(title="Tufts Jumbo Weather Forecast", css=CUSTOM_CSS) as demo:
 
     # ── Top bar ───────────────────────────────────────────────────
     gr.HTML(
@@ -314,15 +312,15 @@ with gr.Blocks(title="Tufts Jumbo Weather Forecast") as demo:
 
     with gr.Row(equal_height=True):
         sat_plot = gr.Plot(
-            value=_sat_fig, label="Satellite",
+            label="Satellite",
             elem_classes=["map-cell"],
         )
         street_plot = gr.Plot(
-            value=_street_fig, label="Reference Map",
+            label="Reference Map",
             elem_classes=["map-cell"],
         )
         temp_plot = gr.Plot(
-            value=_temp_placeholder, label="Temperature",
+            label="Temperature",
             elem_classes=["map-cell"],
         )
 
@@ -341,7 +339,7 @@ with gr.Blocks(title="Tufts Jumbo Weather Forecast") as demo:
     run_btn.click(
         fn=do_forecast,
         inputs=[model_dd],
-        outputs=[hero_html, temp_plot, status_bar],
+        outputs=[hero_html, sat_plot, street_plot, temp_plot, status_bar],
     )
 
 
@@ -353,4 +351,4 @@ if __name__ == "__main__":
     except Exception as e:
         logger.warning(f"Pre-load failed: {e}")
 
-    demo.launch(share=False, css=CUSTOM_CSS)
+    demo.launch(share=False)
