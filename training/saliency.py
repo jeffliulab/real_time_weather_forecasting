@@ -77,6 +77,10 @@ def load_model_from_checkpoint(ckpt_path, device):
     model.eval()
 
     norm_stats = ckpt.get("norm_stats")
+    # Ensure norm_stats are on CPU for dataset loading
+    if norm_stats is not None:
+        norm_stats = {k: v.cpu() if isinstance(v, torch.Tensor) else v
+                      for k, v in norm_stats.items()}
     return model, norm_stats, args
 
 
@@ -234,7 +238,129 @@ def main():
 
     plot_saliency_maps(saliency, overall, metadata, output_dir)
 
+    # Spatial analysis: directional and distance-based saliency breakdown
+    analyze_spatial_saliency(saliency, overall, metadata, output_dir)
+
     print("\nDone! Output directory:", output_dir)
+
+
+def analyze_spatial_saliency(saliency, overall, metadata, output_dir):
+    """
+    Quantitative spatial analysis of saliency maps:
+    - Directional breakdown (N/S/E/W quadrants relative to Jumbo)
+    - Distance-based decay from Jumbo
+    - Top contributing regions
+    """
+    jumbo_y = metadata["jumbo_y_idx"]  # row index
+    jumbo_x = metadata["jumbo_x_idx"]  # col index
+    grid_x = metadata.get("grid_x")
+    grid_y = metadata.get("grid_y")
+    H, W = overall.shape
+
+    lines = []
+    lines.append("=" * 70)
+    lines.append("SPATIAL SALIENCY ANALYSIS")
+    lines.append(f"Jumbo Statue grid position: row={jumbo_y}, col={jumbo_x}")
+    lines.append("=" * 70)
+
+    # --- Quadrant analysis (relative to Jumbo) ---
+    north = overall[:jumbo_y, :]       # rows above Jumbo (lower y-index = south in image coords, but grid_y increasing = north)
+    south = overall[jumbo_y:, :]
+    west = overall[:, :jumbo_x]
+    east = overall[:, jumbo_x:]
+
+    # In Lambert conformal: grid_y increases northward
+    # So rows 0..jumbo_y = south, rows jumbo_y..H = north
+    # grid_x increases eastward: cols 0..jumbo_x = west, cols jumbo_x..W = east
+    if grid_y is not None and len(grid_y) > 1:
+        if grid_y[0] < grid_y[-1]:
+            # grid_y increasing with row index = row 0 is south
+            south_sal = overall[:jumbo_y, :].mean()
+            north_sal = overall[jumbo_y:, :].mean()
+        else:
+            south_sal = overall[jumbo_y:, :].mean()
+            north_sal = overall[:jumbo_y, :].mean()
+    else:
+        south_sal = overall[jumbo_y:, :].mean()
+        north_sal = overall[:jumbo_y, :].mean()
+
+    west_sal = overall[:, :jumbo_x].mean()
+    east_sal = overall[:, jumbo_x:].mean()
+    total_sal = overall.mean()
+
+    lines.append("\n--- Directional Saliency (mean, relative to Jumbo) ---")
+    lines.append(f"  North: {north_sal:.6f}  ({north_sal/total_sal:.2f}x avg)")
+    lines.append(f"  South: {south_sal:.6f}  ({south_sal/total_sal:.2f}x avg)")
+    lines.append(f"  West:  {west_sal:.6f}  ({west_sal/total_sal:.2f}x avg)")
+    lines.append(f"  East:  {east_sal:.6f}  ({east_sal/total_sal:.2f}x avg)")
+    lines.append(f"  Overall mean: {total_sal:.6f}")
+
+    # Physical interpretation hint
+    if west_sal > east_sal:
+        lines.append("  -> Western regions contribute more than eastern (consistent with prevailing westerlies)")
+    if south_sal > north_sal:
+        lines.append("  -> Southern regions contribute more (possible subtropical moisture transport)")
+
+    # --- Distance-based analysis ---
+    yy, xx = np.mgrid[0:H, 0:W]
+    dist = np.sqrt((yy - jumbo_y) ** 2 + (xx - jumbo_x) ** 2)
+
+    # Distance bins (in grid cells, ~3km each)
+    bin_edges = [0, 25, 50, 100, 150, 200, 300]
+    lines.append("\n--- Saliency vs Distance from Jumbo ---")
+    lines.append(f"  {'Range (cells)':>18} {'~km':>8} {'Mean Sal':>12} {'Rel':>8}")
+    for i in range(len(bin_edges) - 1):
+        mask = (dist >= bin_edges[i]) & (dist < bin_edges[i + 1])
+        if mask.sum() > 0:
+            mean_sal = overall[mask].mean()
+            km_lo, km_hi = bin_edges[i] * 3, bin_edges[i + 1] * 3
+            lines.append(f"  {bin_edges[i]:>6}-{bin_edges[i+1]:<6}      {km_lo:>3}-{km_hi:<3}km  {mean_sal:.6f}  {mean_sal/total_sal:>6.2f}x")
+
+    # --- Per-target directional breakdown ---
+    lines.append("\n--- Per-Target Directional Breakdown ---")
+    lines.append(f"  {'Target':<20} {'North':>10} {'South':>10} {'West':>10} {'East':>10}")
+    for var, name in zip(TARGET_VARS, TARGET_DISPLAY):
+        sal = saliency[var]
+        if grid_y is not None and len(grid_y) > 1 and grid_y[0] < grid_y[-1]:
+            n = sal[jumbo_y:, :].mean()
+            s = sal[:jumbo_y, :].mean()
+        else:
+            n = sal[:jumbo_y, :].mean()
+            s = sal[jumbo_y:, :].mean()
+        w = sal[:, :jumbo_x].mean()
+        e = sal[:, jumbo_x:].mean()
+        lines.append(f"  {name:<20} {n:>10.6f} {s:>10.6f} {w:>10.6f} {e:>10.6f}")
+
+    report = "\n".join(lines)
+    print(report)
+
+    with open(output_dir / "saliency_analysis.txt", "w") as f:
+        f.write(report)
+    print(f"\nSaved analysis to {output_dir / 'saliency_analysis.txt'}")
+
+    # --- Distance decay plot ---
+    n_bins = 50
+    max_dist = dist.max()
+    bin_centers = []
+    bin_means = []
+    for i in range(n_bins):
+        lo = max_dist * i / n_bins
+        hi = max_dist * (i + 1) / n_bins
+        mask = (dist >= lo) & (dist < hi)
+        if mask.sum() > 0:
+            bin_centers.append((lo + hi) / 2 * 3)  # convert to km
+            bin_means.append(overall[mask].mean())
+
+    fig, ax = plt.subplots(figsize=(8, 5))
+    ax.plot(bin_centers, bin_means, "b-", linewidth=2)
+    ax.set_xlabel("Distance from Jumbo Statue (km)", fontsize=12)
+    ax.set_ylabel("Mean Saliency", fontsize=12)
+    ax.set_title("Saliency Decay with Distance", fontsize=14)
+    ax.axvline(x=0, color="red", linestyle="--", alpha=0.5, label="Jumbo location")
+    ax.legend()
+    plt.tight_layout()
+    plt.savefig(output_dir / "saliency_distance_decay.png", dpi=150)
+    plt.close()
 
 
 if __name__ == "__main__":

@@ -10,6 +10,8 @@
 
 # Usage (from project root):
 #   sbatch scripts/train.slurm                                          # baseline CNN
+#   sbatch --job-name=resnet18 scripts/train.slurm resnet18 --patience 10        # ResNet-18
+#   sbatch --job-name=convnext scripts/train.slurm convnext_tiny --patience 10   # ConvNeXt-Tiny
 #   sbatch --job-name=multi_frame scripts/train.slurm cnn_multi_frame   # multi-frame
 #   sbatch --job-name=cnn_3d scripts/train.slurm cnn_3d                 # 3D CNN
 #   sbatch --job-name=vit scripts/train.slurm vit                       # ViT
@@ -30,4 +32,4 @@ echo "GPU: $(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null || ec
 echo "Date: $(date)"
 echo "=========================================="
 
-python train.py --model $MODEL $EXTRA_ARGS
+python training/train.py --model $MODEL $EXTRA_ARGS

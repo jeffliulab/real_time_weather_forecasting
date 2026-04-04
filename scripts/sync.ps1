@@ -8,7 +8,7 @@ $REMOTE_ROOT = "/cluster/tufts/c26sp1cs0137/pliu07/assignment2"
 Write-Host "Syncing $LOCAL_ROOT -> ${REMOTE}:${REMOTE_ROOT}" -ForegroundColor Cyan
 
 # Create remote directory structure
-ssh $REMOTE "mkdir -p $REMOTE_ROOT/{data_preparation,models,scripts,tests,inference,evaluation/baseline_cnn}"
+ssh $REMOTE "mkdir -p $REMOTE_ROOT/{data_preparation,models,scripts,tests,inference,evaluation/{baseline_cnn,resnet18,convnext_tiny}}"
 
 # Sync code files (exclude data, runs, __pycache__, .git)
 $files = @(
@@ -23,12 +23,18 @@ $files = @(
     "models/cnn_multi_frame.py",
     "models/cnn_3d.py",
     "models/vit.py",
+    "models/resnet_baseline.py",
+    "models/convnext_baseline.py",
     "scripts/train.slurm",
     "scripts/saliency.slurm",
     "tests/smoke_test.py",
     "inference/__init__.py",
     "inference/predict.py",
-    "evaluation/baseline_cnn/model.py"
+    "evaluation/baseline_cnn/model.py",
+    "evaluation/resnet18/model.py",
+    "evaluation/convnext_tiny/model.py",
+    "evaluation/evaluate_all.py",
+    "scripts/evaluate.slurm"
 )
 
 foreach ($f in $files) {

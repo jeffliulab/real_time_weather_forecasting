@@ -1,7 +1,8 @@
 #!/bin/bash
 #SBATCH -n 1
 #SBATCH -t 0-02:00:00
-#SBATCH --mem=16G
+#SBATCH --mem=32G
+#SBATCH -p gpu
 #SBATCH --gres=gpu:1
 #SBATCH -o runs/saliency_%j.out
 #SBATCH -e runs/saliency_%j.err
@@ -22,4 +23,4 @@ echo "Checkpoint: $CHECKPOINT"
 echo "Node: $(hostname)"
 echo "Date: $(date)"
 
-python saliency.py --checkpoint $CHECKPOINT --n_samples 300
+python training/saliency.py --checkpoint $CHECKPOINT --n_samples 300

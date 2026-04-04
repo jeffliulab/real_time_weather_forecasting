@@ -23,7 +23,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from data_preparation.dataset import get_dataloaders
+from training.data_preparation.dataset import get_dataloaders
 from models import create_model, get_model_defaults, MODEL_REGISTRY
 
 
@@ -49,6 +49,8 @@ def parse_args():
     parser.add_argument("--base_channels", type=int, default=64)
 
     # Infrastructure
+    parser.add_argument("--patience", type=int, default=0,
+                        help="Early stopping patience (0 = disabled)")
     parser.add_argument("--resume", type=str, default=None,
                         help="Path to checkpoint to resume from")
     parser.add_argument("--num_workers", type=int, default=2)
@@ -210,6 +212,8 @@ def train_one_epoch(model, loader, optimizer, criterion, device, epoch=0):
         total_loss += loss.item()
         n_batches += 1
 
+        del x, target, pred, loss
+
         if (batch_idx + 1) % 200 == 0 or (batch_idx + 1) == n_total:
             avg = total_loss / n_batches if n_batches > 0 else float("nan")
             print(f"  [train] batch {batch_idx+1}/{n_total} loss={avg:.4f}", flush=True)
@@ -222,6 +226,7 @@ def validate(model, loader, criterion, device):
     model.eval()
     total_loss = 0
     n_batches = 0
+    # Accumulate only small CPU tensors (predictions are (B,6), not full inputs)
     all_preds, all_targets, all_binary = [], [], []
     n_total = len(loader)
 
@@ -241,6 +246,9 @@ def validate(model, loader, criterion, device):
         all_preds.append(pred.cpu())
         all_targets.append(target.cpu())
         all_binary.append(binary)
+
+        # Free GPU memory for large multi-frame inputs
+        del x, target, pred, loss
 
         if (batch_idx + 1) % 500 == 0 or (batch_idx + 1) == n_total:
             print(f"  [val] batch {batch_idx+1}/{n_total}", flush=True)
@@ -329,7 +337,11 @@ def main():
     norm_stats_cpu = {k: v.cpu() if torch.is_tensor(v) else v
                       for k, v in norm_stats.items()}
 
+    epochs_no_improve = 0
+
     print(f"\nTraining for {args.epochs} epochs...")
+    if args.patience > 0:
+        print(f"Early stopping enabled: patience={args.patience}")
     print("=" * 70)
 
     for epoch in range(start_epoch, args.epochs):
@@ -369,9 +381,11 @@ def main():
 
         if val_loss < best_val_loss:
             best_val_loss = val_loss
+            epochs_no_improve = 0
             torch.save(ckpt_data, out_dir / "checkpoints" / "best.pt")
             marker = " *best*"
         else:
+            epochs_no_improve += 1
             marker = ""
 
         # Print summary
@@ -388,6 +402,11 @@ def main():
               f"{' '.join(rmse_strs)} {auc_str} | "
               f"lr={optimizer.param_groups[0]['lr']:.1e} "
               f"t={time.time()-t0:.0f}s{marker}")
+
+        # Early stopping
+        if args.patience > 0 and epochs_no_improve >= args.patience:
+            print(f"\nEarly stopping: no improvement for {args.patience} epochs")
+            break
 
     print("=" * 70)
     print(f"Training complete. Best val loss: {best_val_loss:.4f}")
