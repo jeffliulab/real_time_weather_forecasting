@@ -43,6 +43,11 @@ AVAILABLE_MODELS = {
         "checkpoint": "checkpoints/resnet18.pt",
         "params": "11.2M",
     },
+    "vit": {
+        "display_name": "WeatherViT",
+        "checkpoint": "checkpoints/vit.pt",
+        "params": "7.4M",
+    },
 }
 
 

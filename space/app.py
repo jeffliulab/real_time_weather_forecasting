@@ -15,6 +15,9 @@ from model_utils import run_forecast, load_model, AVAILABLE_MODELS
 from visualization import (
     get_static_maps,
     plot_temperature,
+    plot_precipitation,
+    plot_wind_speed,
+    plot_humidity,
 )
 
 logging.basicConfig(level=logging.INFO)
@@ -267,9 +270,12 @@ def do_forecast(model_display: str, progress=gr.Progress()):
     model_label = model_display.split("(")[0].strip()
     hero = _hero_html(r, cycle_str, forecast_str, model_label)
     temp_fig = plot_temperature(input_array, r, cycle_str, forecast_str)
+    precip_fig = plot_precipitation(input_array, r, cycle_str, forecast_str)
+    wind_fig = plot_wind_speed(input_array, r, cycle_str, forecast_str)
+    humid_fig = plot_humidity(input_array, r, cycle_str, forecast_str)
     status = f"Forecast complete — HRRR cycle {cycle_str}"
 
-    return hero, sat_fig, street_fig, temp_fig, status
+    return hero, sat_fig, street_fig, temp_fig, precip_fig, wind_fig, humid_fig, status
 
 
 # ── Build UI ──────────────────────────────────────────────────────────
@@ -324,12 +330,29 @@ with gr.Blocks(title="Tufts Jumbo Weather Forecast", css=CUSTOM_CSS) as demo:
             elem_classes=["map-cell"],
         )
 
+    gr.HTML('<div class="maps-heading">Current Input Fields &ensp; with 24 h Forecast at Jumbo</div>')
+
+    with gr.Row(equal_height=True):
+        precip_plot = gr.Plot(
+            label="Precipitation",
+            elem_classes=["map-cell"],
+        )
+        wind_plot = gr.Plot(
+            label="Wind Speed",
+            elem_classes=["map-cell"],
+        )
+        humid_plot = gr.Plot(
+            label="Humidity",
+            elem_classes=["map-cell"],
+        )
+
     # ── About ─────────────────────────────────────────────────────
     with gr.Accordion("About this demo", open=False):
         gr.Markdown(
             "**Data** &ensp; HRRR 3 km analysis from NOAA (AWS S3, via Herbie). "
             "42 atmospheric channels covering the US Northeast.\n\n"
-            "**Models** &ensp; CNN Baseline (11.3 M params) · ResNet-18 (11.2 M params) — "
+            "**Models** &ensp; CNN Baseline (11.3 M params) · ResNet-18 (11.2 M params) · "
+            "WeatherViT (7.4 M params, best rain AUC) — "
             "predict 6 weather variables 24 h ahead for a single target point.\n\n"
             "**Course** &ensp; Tufts CS 137 — Deep Neural Networks, Spring 2026",
             elem_classes=["about-section"],
@@ -339,7 +362,8 @@ with gr.Blocks(title="Tufts Jumbo Weather Forecast", css=CUSTOM_CSS) as demo:
     run_btn.click(
         fn=do_forecast,
         inputs=[model_dd],
-        outputs=[hero_html, sat_plot, street_plot, temp_plot, status_bar],
+        outputs=[hero_html, sat_plot, street_plot, temp_plot,
+                 precip_plot, wind_plot, humid_plot, status_bar],
     )
 
 

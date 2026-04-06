@@ -1,0 +1,16 @@
+{
+  "model": "resnet18",
+  "data_root": "/cluster/tufts/c26sp1cs0137/pliu07/assignment2",
+  "epochs": 30,
+  "batch_size": 8,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "scheduler": "cosine",
+  "n_frames": null,
+  "base_channels": 64,
+  "patience": 10,
+  "resume": null,
+  "num_workers": 2,
+  "output_dir": null,
+  "device": null
+}

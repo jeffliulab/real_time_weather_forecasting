@@ -176,7 +176,7 @@ def plot_temperature(
 
     temp_c = forecast["temperature_c"]
     temp_f = forecast["temperature_f"]
-    label = f"Forecast {forecast_str}\n{temp_c:+.1f} °C  /  {temp_f:.0f} °F"
+    label = f"24h Forecast: {forecast_str}\n{temp_c:+.1f} °C  /  {temp_f:.0f} °F"
     ax.text(
         JUMBO_LON + 0.45, JUMBO_LAT + 0.35, label,
         fontsize=8.5, fontweight="bold", fontfamily="sans-serif",
@@ -185,7 +185,142 @@ def plot_temperature(
     )
 
     ax.set_title(
-        f"2 m Temperature — {cycle_str}",
+        f"Current 2 m Temperature (Input) — {cycle_str}",
+        fontsize=12, fontweight="600",
+        fontfamily="sans-serif", pad=8, color="#1D1D1F",
+    )
+    fig.subplots_adjust(left=0.02, right=0.95, bottom=0.02, top=0.93)
+    return fig
+
+
+def plot_precipitation(
+    input_array: np.ndarray,
+    forecast: dict,
+    cycle_str: str,
+    forecast_str: str,
+) -> Figure:
+    """Render 1-hour accumulated precipitation map with forecast annotation."""
+    fig, ax = _make_ax()
+
+    precip_field = input_array[:, :, 6]  # APCP_1hr_acc_fcst@surface (mm)
+    masked = np.ma.masked_invalid(precip_field)
+
+    im = ax.pcolormesh(
+        X_GRID, Y_GRID, masked,
+        cmap="YlGnBu", shading="auto", transform=PROJ, zorder=5,
+        vmin=0, vmax=10,
+    )
+    ax.add_feature(cfeature.COASTLINE, linewidth=0.5, color="#444", zorder=10)
+    ax.add_feature(cfeature.STATES, linewidth=0.3, edgecolor="#666", zorder=10)
+
+    cbar = fig.colorbar(im, ax=ax, shrink=0.72, pad=0.03, aspect=28)
+    cbar.set_label("mm", fontsize=10, fontfamily="sans-serif")
+    cbar.ax.tick_params(labelsize=8)
+
+    ax.plot(JUMBO_LON, JUMBO_LAT, **_MARKER)
+
+    precip = forecast["precipitation_mm"]
+    label = f"24h Forecast: {forecast_str}\n{precip:.2f} mm — {forecast['rain_status']}"
+    ax.text(
+        JUMBO_LON + 0.45, JUMBO_LAT + 0.35, label,
+        fontsize=8.5, fontweight="bold", fontfamily="sans-serif",
+        color="white", transform=ccrs.PlateCarree(), zorder=25,
+        bbox=dict(boxstyle="round,pad=0.35", fc="#1C1C1E", ec="white", alpha=0.88, lw=0.8),
+    )
+
+    ax.set_title(
+        f"Current Precipitation (Input) — {cycle_str}",
+        fontsize=12, fontweight="600",
+        fontfamily="sans-serif", pad=8, color="#1D1D1F",
+    )
+    fig.subplots_adjust(left=0.02, right=0.95, bottom=0.02, top=0.93)
+    return fig
+
+
+def plot_wind_speed(
+    input_array: np.ndarray,
+    forecast: dict,
+    cycle_str: str,
+    forecast_str: str,
+) -> Figure:
+    """Render 10 m wind speed map with forecast annotation."""
+    fig, ax = _make_ax()
+
+    u = input_array[:, :, 2]   # UGRD@10m (m/s)
+    v = input_array[:, :, 3]   # VGRD@10m (m/s)
+    speed_field = np.sqrt(u**2 + v**2)
+    masked = np.ma.masked_invalid(speed_field)
+
+    im = ax.pcolormesh(
+        X_GRID, Y_GRID, masked,
+        cmap="viridis", shading="auto", transform=PROJ, zorder=5,
+        vmin=0, vmax=20,
+    )
+    ax.add_feature(cfeature.COASTLINE, linewidth=0.5, color="#444", zorder=10)
+    ax.add_feature(cfeature.STATES, linewidth=0.3, edgecolor="#666", zorder=10)
+
+    cbar = fig.colorbar(im, ax=ax, shrink=0.72, pad=0.03, aspect=28)
+    cbar.set_label("m/s", fontsize=10, fontfamily="sans-serif")
+    cbar.ax.tick_params(labelsize=8)
+
+    ax.plot(JUMBO_LON, JUMBO_LAT, **_MARKER)
+
+    ws = forecast["wind_speed_ms"]
+    wd = forecast["wind_dir_str"]
+    label = f"24h Forecast: {forecast_str}\n{ws:.1f} m/s from {wd}"
+    ax.text(
+        JUMBO_LON + 0.45, JUMBO_LAT + 0.35, label,
+        fontsize=8.5, fontweight="bold", fontfamily="sans-serif",
+        color="white", transform=ccrs.PlateCarree(), zorder=25,
+        bbox=dict(boxstyle="round,pad=0.35", fc="#1C1C1E", ec="white", alpha=0.88, lw=0.8),
+    )
+
+    ax.set_title(
+        f"Current 10 m Wind Speed (Input) — {cycle_str}",
+        fontsize=12, fontweight="600",
+        fontfamily="sans-serif", pad=8, color="#1D1D1F",
+    )
+    fig.subplots_adjust(left=0.02, right=0.95, bottom=0.02, top=0.93)
+    return fig
+
+
+def plot_humidity(
+    input_array: np.ndarray,
+    forecast: dict,
+    cycle_str: str,
+    forecast_str: str,
+) -> Figure:
+    """Render 2 m relative humidity map with forecast annotation."""
+    fig, ax = _make_ax()
+
+    rh_field = input_array[:, :, 1]  # RH@2m_above_ground (%)
+    masked = np.ma.masked_invalid(rh_field)
+
+    im = ax.pcolormesh(
+        X_GRID, Y_GRID, masked,
+        cmap="BrBG", shading="auto", transform=PROJ, zorder=5,
+        vmin=0, vmax=100,
+    )
+    ax.add_feature(cfeature.COASTLINE, linewidth=0.5, color="#444", zorder=10)
+    ax.add_feature(cfeature.STATES, linewidth=0.3, edgecolor="#666", zorder=10)
+
+    cbar = fig.colorbar(im, ax=ax, shrink=0.72, pad=0.03, aspect=28)
+    cbar.set_label("%", fontsize=10, fontfamily="sans-serif")
+    cbar.ax.tick_params(labelsize=8)
+
+    ax.plot(JUMBO_LON, JUMBO_LAT, **_MARKER)
+
+    rh = forecast["humidity_pct"]
+    label = f"24h Forecast: {forecast_str}\n{rh:.0f}%"
+    ax.text(
+        JUMBO_LON + 0.45, JUMBO_LAT + 0.35, label,
+        fontsize=8.5, fontweight="bold", fontfamily="sans-serif",
+        color="white", transform=ccrs.PlateCarree(), zorder=25,
+        bbox=dict(boxstyle="round,pad=0.35", fc="#1C1C1E", ec="white", alpha=0.88, lw=0.8),
+    )
+
+    ax.set_title(
+        f"Current 2 m Humidity (Input) — {cycle_str}",
         fontsize=12, fontweight="600",
         fontfamily="sans-serif", pad=8, color="#1D1D1F",
     )
